@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8BD5A7BC23F9DABF0024E235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */; };
+		8BD5A7BE23F9DABF0024E235 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD5A7BD23F9DABF0024E235 /* SceneDelegate.swift */; };
+		8BD5A7C023F9DABF0024E235 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD5A7BF23F9DABF0024E235 /* ViewController.swift */; };
+		8BD5A7C323F9DABF0024E235 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD5A7C123F9DABF0024E235 /* Main.storyboard */; };
+		8BD5A7C523F9DAC00024E235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BD5A7C423F9DAC00024E235 /* Assets.xcassets */; };
+		8BD5A7C823F9DAC00024E235 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD5A7C623F9DAC00024E235 /* LaunchScreen.storyboard */; };
+		8BD5A7D323F9DAC00024E235 /* BluetoothRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD5A7D223F9DAC00024E235 /* BluetoothRemoteTests.swift */; };
+		8BD5A7DE23F9DAC00024E235 /* BluetoothRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD5A7DD23F9DAC00024E235 /* BluetoothRemoteUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8BD5A7CF23F9DAC00024E235 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BD5A7B023F9DABF0024E235 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BD5A7B723F9DABF0024E235;
+			remoteInfo = BluetoothRemote;
+		};
+		8BD5A7DA23F9DAC00024E235 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BD5A7B023F9DABF0024E235 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BD5A7B723F9DABF0024E235;
+			remoteInfo = BluetoothRemote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8BD5A7B823F9DABF0024E235 /* BluetoothRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8BD5A7BD23F9DABF0024E235 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8BD5A7BF23F9DABF0024E235 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BD5A7C223F9DABF0024E235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8BD5A7C423F9DAC00024E235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8BD5A7C723F9DAC00024E235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8BD5A7C923F9DAC00024E235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BD5A7CE23F9DAC00024E235 /* BluetoothRemoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothRemoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BD5A7D223F9DAC00024E235 /* BluetoothRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothRemoteTests.swift; sourceTree = "<group>"; };
+		8BD5A7D423F9DAC00024E235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BD5A7D923F9DAC00024E235 /* BluetoothRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BD5A7DD23F9DAC00024E235 /* BluetoothRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothRemoteUITests.swift; sourceTree = "<group>"; };
+		8BD5A7DF23F9DAC00024E235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8BD5A7B523F9DABF0024E235 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD5A7CB23F9DAC00024E235 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD5A7D623F9DAC00024E235 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8BD5A7AF23F9DABF0024E235 = {
+			isa = PBXGroup;
+			children = (
+				8BD5A7BA23F9DABF0024E235 /* BluetoothRemote */,
+				8BD5A7D123F9DAC00024E235 /* BluetoothRemoteTests */,
+				8BD5A7DC23F9DAC00024E235 /* BluetoothRemoteUITests */,
+				8BD5A7B923F9DABF0024E235 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8BD5A7B923F9DABF0024E235 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8BD5A7B823F9DABF0024E235 /* BluetoothRemote.app */,
+				8BD5A7CE23F9DAC00024E235 /* BluetoothRemoteTests.xctest */,
+				8BD5A7D923F9DAC00024E235 /* BluetoothRemoteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8BD5A7BA23F9DABF0024E235 /* BluetoothRemote */ = {
+			isa = PBXGroup;
+			children = (
+				8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */,
+				8BD5A7BD23F9DABF0024E235 /* SceneDelegate.swift */,
+				8BD5A7BF23F9DABF0024E235 /* ViewController.swift */,
+				8BD5A7C123F9DABF0024E235 /* Main.storyboard */,
+				8BD5A7C423F9DAC00024E235 /* Assets.xcassets */,
+				8BD5A7C623F9DAC00024E235 /* LaunchScreen.storyboard */,
+				8BD5A7C923F9DAC00024E235 /* Info.plist */,
+			);
+			path = BluetoothRemote;
+			sourceTree = "<group>";
+		};
+		8BD5A7D123F9DAC00024E235 /* BluetoothRemoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				8BD5A7D223F9DAC00024E235 /* BluetoothRemoteTests.swift */,
+				8BD5A7D423F9DAC00024E235 /* Info.plist */,
+			);
+			path = BluetoothRemoteTests;
+			sourceTree = "<group>";
+		};
+		8BD5A7DC23F9DAC00024E235 /* BluetoothRemoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8BD5A7DD23F9DAC00024E235 /* BluetoothRemoteUITests.swift */,
+				8BD5A7DF23F9DAC00024E235 /* Info.plist */,
+			);
+			path = BluetoothRemoteUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8BD5A7B723F9DABF0024E235 /* BluetoothRemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BD5A7E223F9DAC00024E235 /* Build configuration list for PBXNativeTarget "BluetoothRemote" */;
+			buildPhases = (
+				8BD5A7B423F9DABF0024E235 /* Sources */,
+				8BD5A7B523F9DABF0024E235 /* Frameworks */,
+				8BD5A7B623F9DABF0024E235 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluetoothRemote;
+			productName = BluetoothRemote;
+			productReference = 8BD5A7B823F9DABF0024E235 /* BluetoothRemote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8BD5A7CD23F9DAC00024E235 /* BluetoothRemoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BD5A7E523F9DAC00024E235 /* Build configuration list for PBXNativeTarget "BluetoothRemoteTests" */;
+			buildPhases = (
+				8BD5A7CA23F9DAC00024E235 /* Sources */,
+				8BD5A7CB23F9DAC00024E235 /* Frameworks */,
+				8BD5A7CC23F9DAC00024E235 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8BD5A7D023F9DAC00024E235 /* PBXTargetDependency */,
+			);
+			name = BluetoothRemoteTests;
+			productName = BluetoothRemoteTests;
+			productReference = 8BD5A7CE23F9DAC00024E235 /* BluetoothRemoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8BD5A7D823F9DAC00024E235 /* BluetoothRemoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BD5A7E823F9DAC00024E235 /* Build configuration list for PBXNativeTarget "BluetoothRemoteUITests" */;
+			buildPhases = (
+				8BD5A7D523F9DAC00024E235 /* Sources */,
+				8BD5A7D623F9DAC00024E235 /* Frameworks */,
+				8BD5A7D723F9DAC00024E235 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8BD5A7DB23F9DAC00024E235 /* PBXTargetDependency */,
+			);
+			name = BluetoothRemoteUITests;
+			productName = BluetoothRemoteUITests;
+			productReference = 8BD5A7D923F9DAC00024E235 /* BluetoothRemoteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8BD5A7B023F9DABF0024E235 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = tudor;
+				TargetAttributes = {
+					8BD5A7B723F9DABF0024E235 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					8BD5A7CD23F9DAC00024E235 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8BD5A7B723F9DABF0024E235;
+					};
+					8BD5A7D823F9DAC00024E235 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8BD5A7B723F9DABF0024E235;
+					};
+				};
+			};
+			buildConfigurationList = 8BD5A7B323F9DABF0024E235 /* Build configuration list for PBXProject "BluetoothRemote" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8BD5A7AF23F9DABF0024E235;
+			productRefGroup = 8BD5A7B923F9DABF0024E235 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8BD5A7B723F9DABF0024E235 /* BluetoothRemote */,
+				8BD5A7CD23F9DAC00024E235 /* BluetoothRemoteTests */,
+				8BD5A7D823F9DAC00024E235 /* BluetoothRemoteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8BD5A7B623F9DABF0024E235 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BD5A7C823F9DAC00024E235 /* LaunchScreen.storyboard in Resources */,
+				8BD5A7C523F9DAC00024E235 /* Assets.xcassets in Resources */,
+				8BD5A7C323F9DABF0024E235 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD5A7CC23F9DAC00024E235 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD5A7D723F9DAC00024E235 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8BD5A7B423F9DABF0024E235 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BD5A7C023F9DABF0024E235 /* ViewController.swift in Sources */,
+				8BD5A7BC23F9DABF0024E235 /* AppDelegate.swift in Sources */,
+				8BD5A7BE23F9DABF0024E235 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD5A7CA23F9DAC00024E235 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BD5A7D323F9DAC00024E235 /* BluetoothRemoteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BD5A7D523F9DAC00024E235 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BD5A7DE23F9DAC00024E235 /* BluetoothRemoteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8BD5A7D023F9DAC00024E235 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BD5A7B723F9DABF0024E235 /* BluetoothRemote */;
+			targetProxy = 8BD5A7CF23F9DAC00024E235 /* PBXContainerItemProxy */;
+		};
+		8BD5A7DB23F9DAC00024E235 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BD5A7B723F9DABF0024E235 /* BluetoothRemote */;
+			targetProxy = 8BD5A7DA23F9DAC00024E235 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8BD5A7C123F9DABF0024E235 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BD5A7C223F9DABF0024E235 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8BD5A7C623F9DAC00024E235 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BD5A7C723F9DAC00024E235 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8BD5A7E023F9DAC00024E235 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8BD5A7E123F9DAC00024E235 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8BD5A7E323F9DAC00024E235 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MX583UVSDV;
+				INFOPLIST_FILE = BluetoothRemote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8BD5A7E423F9DAC00024E235 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MX583UVSDV;
+				INFOPLIST_FILE = BluetoothRemote/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8BD5A7E623F9DAC00024E235 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MX583UVSDV;
+				INFOPLIST_FILE = BluetoothRemoteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluetoothRemote.app/BluetoothRemote";
+			};
+			name = Debug;
+		};
+		8BD5A7E723F9DAC00024E235 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MX583UVSDV;
+				INFOPLIST_FILE = BluetoothRemoteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluetoothRemote.app/BluetoothRemote";
+			};
+			name = Release;
+		};
+		8BD5A7E923F9DAC00024E235 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MX583UVSDV;
+				INFOPLIST_FILE = BluetoothRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BluetoothRemote;
+			};
+			name = Debug;
+		};
+		8BD5A7EA23F9DAC00024E235 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MX583UVSDV;
+				INFOPLIST_FILE = BluetoothRemoteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BluetoothRemote;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8BD5A7B323F9DABF0024E235 /* Build configuration list for PBXProject "BluetoothRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BD5A7E023F9DAC00024E235 /* Debug */,
+				8BD5A7E123F9DAC00024E235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BD5A7E223F9DAC00024E235 /* Build configuration list for PBXNativeTarget "BluetoothRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BD5A7E323F9DAC00024E235 /* Debug */,
+				8BD5A7E423F9DAC00024E235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BD5A7E523F9DAC00024E235 /* Build configuration list for PBXNativeTarget "BluetoothRemoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BD5A7E623F9DAC00024E235 /* Debug */,
+				8BD5A7E723F9DAC00024E235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BD5A7E823F9DAC00024E235 /* Build configuration list for PBXNativeTarget "BluetoothRemoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BD5A7E923F9DAC00024E235 /* Debug */,
+				8BD5A7EA23F9DAC00024E235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8BD5A7B023F9DABF0024E235 /* Project object */;
+}
