@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cP7-fp-sd7">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Remote-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BluetoothRemote" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,36 +15,113 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="W09-Tv-LMZ">
-                                <rect key="frame" x="152.33333333333334" y="328" width="109.33333333333334" height="80.333333333333314"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fO7-or-sgJ">
+                                <rect key="frame" x="33.333333333333343" y="342" width="347.33333333333326" height="52"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello gay cunt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25m-t1-XcB">
-                                        <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K98-oc-9c4">
-                                        <rect key="frame" x="19.333333333333314" y="50.333333333333314" width="71" height="30"/>
-                                        <state key="normal" title="Apasa-ma"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTC-PC-bXe">
+                                        <rect key="frame" x="0.0" y="0.0" width="86.333333333333329" height="51"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" image="backward.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="42" scale="large" weight="heavy"/>
+                                        </state>
                                         <connections>
-                                            <action selector="testUDP:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NBW-oz-gw7"/>
+                                            <action selector="previousItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9z-ck-6TR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K98-oc-9c4">
+                                        <rect key="frame" x="126.33333333333331" y="0.0" width="94.666666666666686" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" image="playpause.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="42" scale="large" weight="heavy"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playPauseMedia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mgB-IW-lPd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rin-Kc-MRp">
+                                        <rect key="frame" x="261" y="0.0" width="86.333333333333314" height="51"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" image="forward.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="42" scale="large" weight="heavy"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uJC-Zs-xUO"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" continuous="NO" minimumValueImage="speaker.slash.fill" catalog="system" maximumValueImage="speaker.3.fill" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-Ha-EKN">
+                                <rect key="frame" x="51.666666666666657" y="454" width="311" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IRM-Ha-EKN" secondAttribute="height" multiplier="307:30" id="BmM-Gy-VjS"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="setVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="T29-ns-Dc2"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-Oc-Rsh">
+                                <rect key="frame" x="186.33333333333334" y="301.66666666666669" width="41.666666666666657" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILz-wP-hKP">
+                                <rect key="frame" x="186.33333333333334" y="241.33333333333334" width="41.666666666666657" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="W09-Tv-LMZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gRD-dk-Fkb"/>
-                            <constraint firstItem="W09-Tv-LMZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="p1u-nQ-svE"/>
+                            <constraint firstItem="sLd-Oc-Rsh" firstAttribute="top" secondItem="ILz-wP-hKP" secondAttribute="bottom" constant="40" id="1fV-Kq-fgE"/>
+                            <constraint firstItem="ILz-wP-hKP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F4Q-3J-hp0"/>
+                            <constraint firstItem="fO7-or-sgJ" firstAttribute="top" secondItem="sLd-Oc-Rsh" secondAttribute="bottom" constant="20" id="GIR-ix-hGk"/>
+                            <constraint firstItem="IRM-Ha-EKN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Juy-0s-cbj"/>
+                            <constraint firstItem="fO7-or-sgJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="asv-Qz-STe"/>
+                            <constraint firstItem="sLd-Oc-Rsh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dh3-lG-wvl"/>
+                            <constraint firstItem="fO7-or-sgJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rp2-C6-Qoj"/>
+                            <constraint firstItem="IRM-Ha-EKN" firstAttribute="top" secondItem="fO7-or-sgJ" secondAttribute="bottom" constant="60" id="tYw-Nm-KUV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Remote" id="n9Y-Le-nj1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nzC-vp-FUN"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mediaName" destination="ILz-wP-hKP" id="fgT-Ci-Vha"/>
+                        <outlet property="playerTime" destination="sLd-Oc-Rsh" id="V5u-Gg-Crv"/>
+                        <outlet property="volumeSlider" destination="IRM-Ha-EKN" id="VaI-iL-RRt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039.1304347826087" y="138.58695652173915"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Und-qs-ebQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cP7-fp-sd7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R8l-gc-WkA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WmF-9u-D4m"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sG7-Y7-Xpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.58695652173915"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backward.fill" catalog="system" width="64" height="38"/>
+        <image name="forward.fill" catalog="system" width="64" height="38"/>
+        <image name="playpause.fill" catalog="system" width="64" height="36"/>
+        <image name="speaker.3.fill" catalog="system" width="64" height="44"/>
+        <image name="speaker.slash.fill" catalog="system" width="64" height="62"/>
+    </resources>
 </document>
