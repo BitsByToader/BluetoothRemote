@@ -42,10 +42,26 @@ class ViewController: UIViewController {
         port: 5005,
         handler: { [weak self] (ipAddress: String, port: Int, response: Data) -> Void in
             //Cast the received packets to a String for easier manipulation
-            let receivedAsString: String? = String(data: response, encoding: String.Encoding.utf8) as String?
+            let receivedString: String? = String(data: response, encoding: String.Encoding.utf8) as String?
+            
+            let packetIdentifier = receivedString!.prefix(1)
+            var finalValue = receivedString ?? " "
+            finalValue.remove(at: receivedString?.startIndex ?? "Unknown".startIndex)
+            
+            switch packetIdentifier {
+            case "N":
+                self?.mediaName.text = finalValue
+            case "T":
+                let seconds = Int(finalValue) ?? 0
+                self?.playerTime.text = "\(seconds/60):\(seconds%60)"
+            case "V":
+                self?.volumeSlider.value = Float(finalValue) ?? 0.0
+            default:
+                break
+            }
             
             //Debuggin purposes
-            print("Received: \(receivedAsString ?? "Nothing?")")
+            print("Received: \(receivedString ?? "Nothing?")")
         },
         errorHandler: { (error) in
           print(error)
