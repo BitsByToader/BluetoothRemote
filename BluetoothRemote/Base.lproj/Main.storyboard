@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cP7-fp-sd7">
-    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BluetoothRemote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fO7-or-sgJ">
-                                <rect key="frame" x="-13" y="214" width="346" height="52"/>
+                                <rect key="frame" x="34" y="422" width="346" height="52"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTC-PC-bXe">
                                         <rect key="frame" x="0.0" y="0.0" width="86" height="51"/>
@@ -51,7 +51,7 @@
                                 </subviews>
                             </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" continuous="NO" minimumValueImage="speaker.slash.fill" catalog="system" maximumValueImage="speaker.3.fill" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-Ha-EKN">
-                                <rect key="frame" x="4.5" y="326" width="311" height="31"/>
+                                <rect key="frame" x="51.5" y="534" width="311" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IRM-Ha-EKN" secondAttribute="height" multiplier="307:30" id="BmM-Gy-VjS"/>
                                 </constraints>
@@ -60,13 +60,13 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-Oc-Rsh">
-                                <rect key="frame" x="139" y="173.5" width="42" height="20.5"/>
+                                <rect key="frame" x="186" y="381.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILz-wP-hKP">
-                                <rect key="frame" x="16" y="113" width="288" height="20.5"/>
+                                <rect key="frame" x="63" y="321" width="288" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="2s3-qn-BVc"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="374" id="U05-0n-mDq"/>
@@ -90,6 +90,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Remote" id="n9Y-Le-nj1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="5xv-iJ-VwO">
+                            <connections>
+                                <action selector="refreshButton:" destination="BYZ-38-t0r" id="2As-zs-eo7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="nzC-vp-FUN">
                             <connections>
                                 <action selector="closeServer:" destination="BYZ-38-t0r" id="iZj-eq-UW5"/>
@@ -112,7 +117,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cP7-fp-sd7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R8l-gc-WkA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -126,7 +131,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backward.fill" catalog="system" width="64" height="38"/>
+        <image name="backward.fill" catalog="system" width="32" height="32"/>
         <image name="forward.fill" catalog="system" width="64" height="38"/>
         <image name="playpause.fill" catalog="system" width="64" height="36"/>
         <image name="speaker.3.fill" catalog="system" width="64" height="44"/>

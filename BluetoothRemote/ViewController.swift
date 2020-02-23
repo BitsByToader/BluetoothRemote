@@ -40,6 +40,10 @@ class ViewController: UIViewController {
         sendUDPCommand(data: "E")
     }
     
+    @IBAction func refreshButton(_ sender: UIBarButtonItem) {
+        sendUDPCommand(data: "I")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +69,7 @@ class ViewController: UIViewController {
                 self?.mediaName.text = finalValue
             case "T":
                 let seconds = Int(finalValue) ?? 0
-                self?.volumeInSeconds = seconds - 1
+                self?.volumeInSeconds = seconds - 2
                 self!.mediaTimer.fire()	
             case "V":
                 self?.volumeSlider.value = Float(finalValue) ?? 0.0
