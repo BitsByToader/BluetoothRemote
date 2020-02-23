@@ -12,6 +12,8 @@ import Foundation
 class ViewController: UIViewController {
     
     var broadcastConnection: UDPBroadcastConnection!
+    var volumeInSeconds: Int = -1
+    var mediaTimer: Timer!
     
     //MARK: Properties
     @IBOutlet weak var volumeSlider: UISlider!
@@ -34,10 +36,20 @@ class ViewController: UIViewController {
         sendUDPCommand( data: "V\( String(Int(volumeSlider.value)) )" )
     }
     
+    @IBAction func closeServer(_ sender: UIBarButtonItem) {
+        sendUDPCommand(data: "E")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadData),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                                object: nil)
+        
         do { broadcastConnection = try UDPBroadcastConnection(
         port: 5005,
         handler: { [weak self] (ipAddress: String, port: Int, response: Data) -> Void in
@@ -53,7 +65,8 @@ class ViewController: UIViewController {
                 self?.mediaName.text = finalValue
             case "T":
                 let seconds = Int(finalValue) ?? 0
-                self?.playerTime.text = "\(seconds/60):\(seconds%60)"
+                self?.volumeInSeconds = seconds - 1
+                self!.mediaTimer.fire()	
             case "V":
                 self?.volumeSlider.value = Float(finalValue) ?? 0.0
             default:
@@ -68,7 +81,12 @@ class ViewController: UIViewController {
         })} catch {
             print("error setting up broadcast connection")
         }
+        
+        sendUDPCommand(data: "I")
+        
+        mediaTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: updateTimerLabel(timer:))
     }
+    
     
     //MARK: Methods
     func sendUDPCommand(data: String!) {
@@ -80,6 +98,15 @@ class ViewController: UIViewController {
         } catch {
             print("error sending")
         }
+    }
+    
+    func updateTimerLabel(timer: Timer) {
+        self.volumeInSeconds += 1
+        self.playerTime.text = "\(self.volumeInSeconds/60):\(self.volumeInSeconds%60)"
+    }
+    
+    @objc func reloadData() {
+        sendUDPCommand(data: "I")
     }
 }
 
