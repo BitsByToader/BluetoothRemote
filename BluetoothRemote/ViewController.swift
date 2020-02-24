@@ -14,22 +14,35 @@ class ViewController: UIViewController {
     var broadcastConnection: UDPBroadcastConnection!
     var volumeInSeconds: Int = -1
     var mediaTimer: Timer!
+    var seekTimer: Timer!
+    var isPlaying: Bool! = false
+    var secondsSeeked: Int! = 0
     
     //MARK: Properties
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var playerTime: UILabel!
     @IBOutlet weak var mediaName: UILabel!
     
+    @IBOutlet weak var playPauseButton: UIButton!
+    
     @IBAction func playPauseMedia(_ sender: UIButton) {
         sendUDPCommand(data: "P")
     }
     
     @IBAction func nextItem(_ sender: UIButton) {
-        sendUDPCommand(data: "N")
+        if ( secondsSeeked < 1 ) {
+            sendUDPCommand(data: "N")
+        }
+        secondsSeeked = 0
+        seekTimer.invalidate()
     }
     
     @IBAction func previousItem(_ sender: UIButton) {
-        sendUDPCommand(data: "R")
+        if ( secondsSeeked < 1 ) {
+            sendUDPCommand(data: "R")
+        }
+        secondsSeeked = 0
+        seekTimer.invalidate()
     }
     
     @IBAction func setVolume(_ sender: UISlider) {
@@ -42,6 +55,14 @@ class ViewController: UIViewController {
     
     @IBAction func refreshButton(_ sender: UIBarButtonItem) {
         sendUDPCommand(data: "I")
+    }
+    
+    @IBAction func seekForward(_ sender: UIButton) {
+        startSeekTimer(type: "+")
+    }
+    
+    @IBAction func seekBackward(_ sender: UIButton) {
+        startSeekTimer(type: "-")
     }
     
     
@@ -69,10 +90,20 @@ class ViewController: UIViewController {
                 self?.mediaName.text = finalValue
             case "T":
                 let seconds = Int(finalValue) ?? 0
-                self?.volumeInSeconds = seconds - 2
-                self!.mediaTimer.fire()	
+                self?.volumeInSeconds = seconds - 1
+                if ( self!.isPlaying ) {
+                    self?.mediaTimer.fire()
+                } else {
+                    self?.startTimer()
+                }
+                self?.isPlaying = true
+                self?.playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             case "V":
                 self?.volumeSlider.value = Float(finalValue) ?? 0.0
+            case "P":
+                self?.isPlaying = false
+                self?.mediaTimer.invalidate()
+                self?.playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             default:
                 break
             }
@@ -88,7 +119,7 @@ class ViewController: UIViewController {
         
         sendUDPCommand(data: "I")
         
-        mediaTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: updateTimerLabel(timer:))
+        startTimer()
     }
     
     
@@ -111,6 +142,30 @@ class ViewController: UIViewController {
     
     @objc func reloadData() {
         sendUDPCommand(data: "I")
+    }
+    
+    func startTimer() {
+        mediaTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: updateTimerLabel(timer:))
+        mediaTimer.tolerance = 0
+    }
+    
+    func startSeekTimer(type: String!) {
+        if ( type == "+" ) {
+            seekTimer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: seekForward(timer:))
+        } else if ( type == "-" ) {
+            seekTimer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: seekBackward(timer:))
+        }
+        seekTimer.tolerance = 0
+    }
+    
+    func seekForward(timer: Timer) {
+        secondsSeeked += 1
+        print("S+")
+    }
+    
+    func seekBackward(timer: Timer) {
+        secondsSeeked += 1
+        print("S-")
     }
 }
 
