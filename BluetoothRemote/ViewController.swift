@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playPauseButton: UIButton!
     
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var closeServerButton: UIBarButtonItem!
+    
     @IBAction func playPauseMedia(_ sender: UIButton) {
         sendUDPCommand(data: "P")
     }
@@ -70,6 +73,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        //Notify the view when it entered the foreground
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadData),
                                                name: UIApplication.didBecomeActiveNotification,
@@ -90,7 +94,7 @@ class ViewController: UIViewController {
                 self?.mediaName.text = finalValue
             case "T":
                 let seconds = Int(finalValue) ?? 0
-                self?.volumeInSeconds = seconds - 1
+                self?.volumeInSeconds = seconds
                 if ( self!.isPlaying ) {
                     self?.mediaTimer.fire()
                 } else {
@@ -116,12 +120,15 @@ class ViewController: UIViewController {
         })} catch {
             print("error setting up broadcast connection")
         }
-        
-        sendUDPCommand(data: "I")
-        
-        startTimer()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        tabBarController?.title = "Your Title"
+//        tabBarController?.navigationItem.rightBarButtonItem = closeServerButton
+//        tabBarController?.navigationItem.leftBarButtonItem = refreshButton
+//    }
     
     //MARK: Methods
     func sendUDPCommand(data: String!) {
@@ -160,12 +167,14 @@ class ViewController: UIViewController {
     
     func seekForward(timer: Timer) {
         secondsSeeked += 1
-        print("S+")
+        sendUDPCommand(data: "S+")
     }
     
     func seekBackward(timer: Timer) {
         secondsSeeked += 1
-        print("S-")
+        sendUDPCommand(data: "S-")
     }
+    
+    
 }
 

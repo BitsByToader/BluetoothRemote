@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cP7-fp-sd7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GbS-Vs-t89">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,16 +7,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Remote-->
+        <!--Media Player-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BluetoothRemote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Media Player" extendedLayoutIncludesOpaqueBars="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="BluetoothRemote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fO7-or-sgJ">
-                                <rect key="frame" x="56" y="420" width="302" height="56"/>
+                                <rect key="frame" x="59" y="422.5" width="296.5" height="51"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTC-PC-bXe">
                                         <rect key="frame" x="0.0" y="0.0" width="86" height="51"/>
@@ -30,17 +30,17 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K98-oc-9c4">
-                                        <rect key="frame" x="126" y="0.0" width="50" height="56"/>
+                                        <rect key="frame" x="126" y="0.0" width="44.5" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" image="play.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="42" scale="large" weight="heavy"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="37" scale="large" weight="heavy"/>
                                         </state>
                                         <connections>
                                             <action selector="playPauseMedia:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mgB-IW-lPd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rin-Kc-MRp">
-                                        <rect key="frame" x="216" y="0.0" width="86" height="51"/>
+                                        <rect key="frame" x="210.5" y="0.0" width="86" height="51"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" image="forward.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="42" scale="large" weight="heavy"/>
@@ -52,8 +52,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" continuous="NO" minimumValueImage="speaker.slash.fill" catalog="system" maximumValueImage="speaker.3.fill" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-Ha-EKN">
-                                <rect key="frame" x="51.5" y="536" width="311" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" minimumValueImage="speaker.slash.fill" catalog="system" maximumValueImage="speaker.3.fill" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-Ha-EKN">
+                                <rect key="frame" x="51.5" y="533.5" width="311" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IRM-Ha-EKN" secondAttribute="height" multiplier="307:30" id="BmM-Gy-VjS"/>
                                 </constraints>
@@ -61,18 +61,14 @@
                                     <action selector="setVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="T29-ns-Dc2"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-Oc-Rsh">
-                                <rect key="frame" x="186" y="379.5" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLd-Oc-Rsh">
+                                <rect key="frame" x="188" y="382" width="38" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILz-wP-hKP">
-                                <rect key="frame" x="63" y="319" width="288" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="2s3-qn-BVc"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="374" id="U05-0n-mDq"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="middleTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILz-wP-hKP">
+                                <rect key="frame" x="55" y="321.5" width="304" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -81,17 +77,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="sLd-Oc-Rsh" firstAttribute="top" secondItem="ILz-wP-hKP" secondAttribute="bottom" constant="40" id="1fV-Kq-fgE"/>
-                            <constraint firstItem="ILz-wP-hKP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F4Q-3J-hp0"/>
                             <constraint firstItem="fO7-or-sgJ" firstAttribute="top" secondItem="sLd-Oc-Rsh" secondAttribute="bottom" constant="20" id="GIR-ix-hGk"/>
                             <constraint firstItem="IRM-Ha-EKN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Juy-0s-cbj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ILz-wP-hKP" secondAttribute="trailing" constant="55" id="aJ6-ct-ILk"/>
                             <constraint firstItem="fO7-or-sgJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="asv-Qz-STe"/>
                             <constraint firstItem="sLd-Oc-Rsh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dh3-lG-wvl"/>
+                            <constraint firstItem="ILz-wP-hKP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="55" id="hhd-B2-aLf"/>
                             <constraint firstItem="fO7-or-sgJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rp2-C6-Qoj"/>
                             <constraint firstItem="IRM-Ha-EKN" firstAttribute="top" secondItem="fO7-or-sgJ" secondAttribute="bottom" constant="60" id="tYw-Nm-KUV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Remote" id="n9Y-Le-nj1">
+                    <navigationItem key="navigationItem" title="Media Player" id="n9Y-Le-nj1">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="5xv-iJ-VwO">
                             <connections>
                                 <action selector="refreshButton:" destination="BYZ-38-t0r" id="2As-zs-eo7"/>
@@ -104,38 +101,77 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeServerButton" destination="nzC-vp-FUN" id="e0W-uD-95V"/>
                         <outlet property="mediaName" destination="ILz-wP-hKP" id="fgT-Ci-Vha"/>
                         <outlet property="playPauseButton" destination="K98-oc-9c4" id="mid-cE-IGe"/>
                         <outlet property="playerTime" destination="sLd-Oc-Rsh" id="V5u-Gg-Crv"/>
+                        <outlet property="refreshButton" destination="5xv-iJ-VwO" id="DZq-gh-m6R"/>
                         <outlet property="volumeSlider" destination="IRM-Ha-EKN" id="VaI-iL-RRt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038.75" y="137.5"/>
+            <point key="canvasLocation" x="228.98550724637684" y="-413.16964285714283"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Und-qs-ebQ">
+        <!--Mouse-->
+        <scene sceneID="ir8-qM-D6c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cP7-fp-sd7" sceneMemberID="viewController">
+                <viewController id="KGN-hN-H8S" customClass="MouseViewController" customModule="BluetoothRemote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ALf-Of-iLZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="GP8-eY-1rf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Mouse" selectedImage="pencil" catalog="system" id="cCP-k9-7dV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9s-TD-AKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-679" y="292"/>
+        </scene>
+        <!--App-->
+        <scene sceneID="JTW-Vc-JZI">
+            <objects>
+                <tabBarController title="App" id="GbS-Vs-t89" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KxD-VN-yHF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="bt8-tm-yAL" kind="relationship" relationship="viewControllers" id="bzK-rq-WkL"/>
+                        <segue destination="KGN-hN-H8S" kind="relationship" relationship="viewControllers" id="uHy-SV-DZN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MqF-z4-2sa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1586" y="-30"/>
+        </scene>
+        <!--Media-->
+        <scene sceneID="tvd-sK-x6I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bt8-tm-yAL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Media" selectedImage="headphones" catalog="system" id="ay5-bA-D5N"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R8l-gc-WkA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qdW-em-UPl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WmF-9u-D4m"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7Mj-v4-F3v"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sG7-Y7-Xpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLl-2H-5zt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="138.58695652173915"/>
+            <point key="canvasLocation" x="-681.15942028985512" y="-413.16964285714283"/>
         </scene>
     </scenes>
     <resources>
         <image name="backward.fill" catalog="system" width="64" height="38"/>
         <image name="forward.fill" catalog="system" width="64" height="38"/>
+        <image name="headphones" catalog="system" width="64" height="52"/>
+        <image name="pencil" catalog="system" width="64" height="56"/>
         <image name="play.fill" catalog="system" width="58" height="64"/>
         <image name="speaker.3.fill" catalog="system" width="64" height="44"/>
         <image name="speaker.slash.fill" catalog="system" width="64" height="62"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B7263BD2409A75D00E774B8 /* MouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7263BC2409A75D00E774B8 /* MouseViewController.swift */; };
 		8BC7058823FC701200DDBD44 /* UDPBroadcastConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */; };
 		8BC7058B23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7058A23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift */; };
 		8BD5A7BC23F9DABF0024E235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B7263BC2409A75D00E774B8 /* MouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseViewController.swift; sourceTree = "<group>"; };
 		8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPBroadcastConnection.swift; sourceTree = "<group>"; };
 		8BC7058923FC702A00DDBD44 /* UDPBroadcast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UDPBroadcast.h; sourceTree = "<group>"; };
 		8BC7058A23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPBroadcastConnectionError.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */,
 				8BD5A7BD23F9DABF0024E235 /* SceneDelegate.swift */,
 				8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */,
+				8B7263BC2409A75D00E774B8 /* MouseViewController.swift */,
 				8BC7058A23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift */,
 				8BC7058923FC702A00DDBD44 /* UDPBroadcast.h */,
 				8BD5A7BF23F9DABF0024E235 /* ViewController.swift */,
@@ -271,6 +274,7 @@
 				8BD5A7BC23F9DABF0024E235 /* AppDelegate.swift in Sources */,
 				8BC7058B23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift in Sources */,
 				8BD5A7BE23F9DABF0024E235 /* SceneDelegate.swift in Sources */,
+				8B7263BD2409A75D00E774B8 /* MouseViewController.swift in Sources */,
 				8BC7058823FC701200DDBD44 /* UDPBroadcastConnection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
