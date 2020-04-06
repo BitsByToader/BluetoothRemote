@@ -48,14 +48,14 @@ class MouseViewController: UIViewController {
         if let touch = touches.first {
             let position = touch.location(in: view)
             
-            if ( callBacksReceived == 4 ) {
+            if ( callBacksReceived == 2	 ) {
                 var x = Int(position.x)
                 var y = Int(position.y)
                 
                 let prevX = Int(previousPosition?.x ?? 0)
                 let prevY = Int(previousPosition?.y ?? 0)
                 
-                let radius = 10
+                let radius = 5
                 
                 if ( x >= prevX + radius || x <= prevX - radius ||
                      y >= prevY + radius || y <= prevY - radius)  {

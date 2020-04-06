@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0FF2C0243B998B00044F6A /* FileTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2BF243B998B00044F6A /* FileTransferViewController.swift */; };
+		8B0FF2CD243BB70F00044F6A /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2C4243BB70E00044F6A /* TCPClient.swift */; };
+		8B0FF2CE243BB70F00044F6A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2C5243BB70E00044F6A /* Socket.swift */; };
+		8B0FF2CF243BB70F00044F6A /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2C6243BB70E00044F6A /* ytcpsocket.c */; };
+		8B0FF2D0243BB70F00044F6A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2C7243BB70F00044F6A /* Result.swift */; };
+		8B0FF2D2243BB70F00044F6A /* UDPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2C9243BB70F00044F6A /* UDPClient.swift */; };
+		8B0FF2D4243BB70F00044F6A /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FF2CB243BB70F00044F6A /* yudpsocket.c */; };
 		8B7263BD2409A75D00E774B8 /* MouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7263BC2409A75D00E774B8 /* MouseViewController.swift */; };
 		8BC7058823FC701200DDBD44 /* UDPBroadcastConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */; };
 		8BC7058B23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7058A23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift */; };
@@ -38,6 +45,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B0FF2BF243B998B00044F6A /* FileTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferViewController.swift; sourceTree = "<group>"; };
+		8B0FF2C1243B99DA00044F6A /* BluetoothRemote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BluetoothRemote.entitlements; sourceTree = "<group>"; };
+		8B0FF2C3243BB70E00044F6A /* BluetoothRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BluetoothRemote-Bridging-Header.h"; sourceTree = "<group>"; };
+		8B0FF2C4243BB70E00044F6A /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		8B0FF2C5243BB70E00044F6A /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		8B0FF2C6243BB70E00044F6A /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = "<group>"; };
+		8B0FF2C7243BB70F00044F6A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		8B0FF2C9243BB70F00044F6A /* UDPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPClient.swift; sourceTree = "<group>"; };
+		8B0FF2CB243BB70F00044F6A /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
+		8B0FF2CC243BB70F00044F6A /* SwiftSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftSocket.h; sourceTree = "<group>"; };
 		8B7263BC2409A75D00E774B8 /* MouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseViewController.swift; sourceTree = "<group>"; };
 		8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPBroadcastConnection.swift; sourceTree = "<group>"; };
 		8BC7058923FC702A00DDBD44 /* UDPBroadcast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UDPBroadcast.h; sourceTree = "<group>"; };
@@ -83,6 +100,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0FF2C2243BB6F000044F6A /* SwiftSocket */ = {
+			isa = PBXGroup;
+			children = (
+				8B0FF2C7243BB70F00044F6A /* Result.swift */,
+				8B0FF2C5243BB70E00044F6A /* Socket.swift */,
+				8B0FF2CC243BB70F00044F6A /* SwiftSocket.h */,
+				8B0FF2C4243BB70E00044F6A /* TCPClient.swift */,
+				8B0FF2C9243BB70F00044F6A /* UDPClient.swift */,
+				8B0FF2C6243BB70E00044F6A /* ytcpsocket.c */,
+				8B0FF2CB243BB70F00044F6A /* yudpsocket.c */,
+				8B0FF2C3243BB70E00044F6A /* BluetoothRemote-Bridging-Header.h */,
+			);
+			path = SwiftSocket;
+			sourceTree = "<group>";
+		};
 		8BD5A7AF23F9DABF0024E235 = {
 			isa = PBXGroup;
 			children = (
@@ -106,13 +138,16 @@
 		8BD5A7BA23F9DABF0024E235 /* BluetoothRemote */ = {
 			isa = PBXGroup;
 			children = (
+				8B0FF2C2243BB6F000044F6A /* SwiftSocket */,
+				8B0FF2C1243B99DA00044F6A /* BluetoothRemote.entitlements */,
 				8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */,
 				8BD5A7BD23F9DABF0024E235 /* SceneDelegate.swift */,
 				8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */,
-				8B7263BC2409A75D00E774B8 /* MouseViewController.swift */,
 				8BC7058A23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift */,
 				8BC7058923FC702A00DDBD44 /* UDPBroadcast.h */,
 				8BD5A7BF23F9DABF0024E235 /* ViewController.swift */,
+				8B7263BC2409A75D00E774B8 /* MouseViewController.swift */,
+				8B0FF2BF243B998B00044F6A /* FileTransferViewController.swift */,
 				8BD5A7C123F9DABF0024E235 /* Main.storyboard */,
 				8BD5A7C423F9DAC00024E235 /* Assets.xcassets */,
 				8BD5A7C623F9DAC00024E235 /* LaunchScreen.storyboard */,
@@ -207,6 +242,7 @@
 				TargetAttributes = {
 					8BD5A7B723F9DABF0024E235 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1140;
 					};
 					8BD5A7CD23F9DAC00024E235 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -270,12 +306,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0FF2D4243BB70F00044F6A /* yudpsocket.c in Sources */,
+				8B0FF2CD243BB70F00044F6A /* TCPClient.swift in Sources */,
 				8BD5A7C023F9DABF0024E235 /* ViewController.swift in Sources */,
 				8BD5A7BC23F9DABF0024E235 /* AppDelegate.swift in Sources */,
 				8BC7058B23FC703D00DDBD44 /* UDPBroadcastConnectionError.swift in Sources */,
+				8B0FF2CF243BB70F00044F6A /* ytcpsocket.c in Sources */,
 				8BD5A7BE23F9DABF0024E235 /* SceneDelegate.swift in Sources */,
+				8B0FF2D2243BB70F00044F6A /* UDPClient.swift in Sources */,
+				8B0FF2CE243BB70F00044F6A /* Socket.swift in Sources */,
 				8B7263BD2409A75D00E774B8 /* MouseViewController.swift in Sources */,
 				8BC7058823FC701200DDBD44 /* UDPBroadcastConnection.swift in Sources */,
+				8B0FF2C0243B998B00044F6A /* FileTransferViewController.swift in Sources */,
+				8B0FF2D0243BB70F00044F6A /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +491,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BluetoothRemote/BluetoothRemote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX583UVSDV;
 				INFOPLIST_FILE = BluetoothRemote/Info.plist;
@@ -457,6 +502,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BluetoothRemote/SwiftSocket/BluetoothRemote-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -466,6 +513,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BluetoothRemote/BluetoothRemote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX583UVSDV;
 				INFOPLIST_FILE = BluetoothRemote/Info.plist;
@@ -475,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tudor.BluetoothRemote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BluetoothRemote/SwiftSocket/BluetoothRemote-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

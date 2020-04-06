@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GbS-Vs-t89">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GbS-Vs-t89">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -123,7 +123,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GP8-eY-1rf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mouse" selectedImage="pencil" catalog="system" id="cCP-k9-7dV"/>
+                    <tabBarItem key="tabBarItem" title="Mouse" image="cursor.rays" catalog="system" id="cCP-k9-7dV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9s-TD-AKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,6 +141,7 @@
                     <connections>
                         <segue destination="bt8-tm-yAL" kind="relationship" relationship="viewControllers" id="bzK-rq-WkL"/>
                         <segue destination="KGN-hN-H8S" kind="relationship" relationship="viewControllers" id="uHy-SV-DZN"/>
+                        <segue destination="J0b-Pf-Gtz" kind="relationship" relationship="viewControllers" id="Ksh-en-2TV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqF-z4-2sa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -151,7 +152,7 @@
         <scene sceneID="tvd-sK-x6I">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bt8-tm-yAL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Media" selectedImage="headphones" catalog="system" id="ay5-bA-D5N"/>
+                    <tabBarItem key="tabBarItem" title="Media" image="headphones" catalog="system" selectedImage="headphones" id="ay5-bA-D5N"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qdW-em-UPl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -166,14 +167,44 @@
             </objects>
             <point key="canvasLocation" x="-681.15942028985512" y="-413.16964285714283"/>
         </scene>
+        <!--Transfer-->
+        <scene sceneID="s2r-JA-r55">
+            <objects>
+                <viewController title="Transfer" id="J0b-Pf-Gtz" customClass="FileTransferViewController" customModule="BluetoothRemote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x0m-22-MVp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEj-Nf-pgn">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="openDocumentPicker:" destination="J0b-Pf-Gtz" eventType="touchUpInside" id="Zwq-4M-cnn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IEj-Nf-pgn" firstAttribute="centerY" secondItem="x0m-22-MVp" secondAttribute="centerY" id="1hX-oz-sa7"/>
+                            <constraint firstItem="IEj-Nf-pgn" firstAttribute="centerX" secondItem="x0m-22-MVp" secondAttribute="centerX" id="BLK-I1-B0f"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vlt-tr-a2d"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Transfer" image="square.and.arrow.down.fill" catalog="system" id="Taz-fj-lng"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="weQ-4I-8ra" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1587" y="730"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="backward.fill" catalog="system" width="64" height="38"/>
-        <image name="forward.fill" catalog="system" width="64" height="38"/>
-        <image name="headphones" catalog="system" width="64" height="52"/>
-        <image name="pencil" catalog="system" width="64" height="56"/>
-        <image name="play.fill" catalog="system" width="58" height="64"/>
-        <image name="speaker.3.fill" catalog="system" width="64" height="44"/>
-        <image name="speaker.slash.fill" catalog="system" width="64" height="62"/>
+        <image name="backward.fill" catalog="system" width="128" height="79"/>
+        <image name="cursor.rays" catalog="system" width="128" height="119"/>
+        <image name="forward.fill" catalog="system" width="128" height="79"/>
+        <image name="headphones" catalog="system" width="128" height="107"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="speaker.3.fill" catalog="system" width="128" height="90"/>
+        <image name="speaker.slash.fill" catalog="system" width="128" height="124"/>
+        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>
