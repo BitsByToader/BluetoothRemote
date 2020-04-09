@@ -10,8 +10,9 @@ import UIKit
 
 class MyDocument: UIDocument {
     var data: Data?
+    var name: String?
     
-    let udp = UDPClient(address: "192.168.100.30", port: 5005)
+    let udp = UDPClient(address: "192.168.100.34", port: 5005)
     
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         print("Loaded!")
@@ -25,9 +26,13 @@ class MyDocument: UIDocument {
         let packet = data!
         var tempPacket = Data()
         
+        print("start send")
+        udp.send(string: "\(name!)/\(data!.count)")
+        print("sent: \(name!)/\(data!.count)")
+        
         var i = 0
         for byte in packet {
-            if ( i != 9 ) {
+            if ( i != 99 ) {
                 tempPacket.append(byte)
                 i += 1
             } else {
@@ -37,14 +42,21 @@ class MyDocument: UIDocument {
                 i = 0
             }
         }
+        
         if ( i != 0 ) {
             let lastBytes = packet.advanced(by: packet.count - i)
             print(lastBytes)
             udp.send(data: lastBytes)
         }
         
-        let result = udp.send(data: [0xFF])
-        print(result)
+//        for byte in packet {
+//            let result = udp.send(data: [byte])
+//            print(result)
+//        }
+        
+        //let result = udp.send(data: [0xFF])
+        //print(result)
+        
         udp.close()
     }
 }
@@ -77,6 +89,7 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
             print("Opened!")
             print(document)
             
+            document.name = url.lastPathComponent
             document.sendData()
             
             document.close(completionHandler: { (Bool) -> Void in
