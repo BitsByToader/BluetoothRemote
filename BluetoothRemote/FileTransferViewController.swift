@@ -12,7 +12,7 @@ class MyDocument: UIDocument {
     var data: Data?
     var name: String?
     
-    let udp = UDPClient(address: "192.168.100.34", port: 5005)
+    let udpConnection = UDPClient(address: "192.168.100.34", port: 5005)
     
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         print("Loaded!")
@@ -21,53 +21,22 @@ class MyDocument: UIDocument {
             print(data)
         }
     }
-    
-    func sendData() {
-        let packet = data!
-        var tempPacket = Data()
-        
-        print("start send")
-        udp.send(string: "\(name!)/\(data!.count)")
-        print("sent: \(name!)/\(data!.count)")
-        
-        var i = 0
-        for byte in packet {
-            if ( i != 99 ) {
-                tempPacket.append(byte)
-                i += 1
-            } else {
-                tempPacket.append(byte)
-                udp.send(data: tempPacket)
-                tempPacket = Data()
-                i = 0
-            }
-        }
-        
-        if ( i != 0 ) {
-            let lastBytes = packet.advanced(by: packet.count - i)
-            print(lastBytes)
-            udp.send(data: lastBytes)
-        }
-        
-//        for byte in packet {
-//            let result = udp.send(data: [byte])
-//            print(result)
-//        }
-        
-        //let result = udp.send(data: [0xFF])
-        //print(result)
-        
-        udp.close()
-    }
 }
 
 class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
+    //MARK: Variables
     let importMenu: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: [String("public.data")], in: .import)
     
+    //MARK: Outlets
     
-
-    @IBAction func openDocumentPicker(_ sender: UIButton) {
-        print("Hello")
+    @IBOutlet weak var fileNameLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var progressPercentage: UILabel!
+    @IBOutlet weak var fileSize: UILabel!
+    @IBOutlet weak var fileInfoView: UIView!
+    
+    //MARK: Actions
+    @IBAction func AddDocument(_ sender: UIBarButtonItem) {
         self.present(importMenu, animated: true, completion: nil)
     }
     
@@ -78,6 +47,8 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         importMenu.delegate = self
         importMenu.modalPresentationStyle = .formSheet
         importMenu.shouldShowFileExtensions = true
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     //MARK: DocumentPicker callbacks
@@ -86,11 +57,21 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         let url = urls[0]
         let document = MyDocument(fileURL: url)
         document.open(completionHandler: { (Bool) -> Void in
-            print("Opened!")
-            print(document)
-            
             document.name = url.lastPathComponent
-            document.sendData()
+            
+            self.progressPercentage.text = "0%"
+            self.progressBar.progress = 0
+            
+            self.fileNameLabel.text = document.name
+            
+            let size: Double = Double(document.data!.count) / (1024*1024)
+            self.fileSize.text = "\( String(format: "%.2f", size) )MB"
+            
+            self.fileInfoView.isHidden = false
+            
+            DispatchQueue.main.async {
+                self.sendData(document: document)
+            }
             
             document.close(completionHandler: { (Bool) -> Void in
                 print("Closed!")
@@ -111,4 +92,41 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Methods
+    func sendData(document: MyDocument) {
+        let packet = document.data!
+        var tempPacket = Data()
+        
+        let _ = document.udpConnection.send(string: "\(document.name!)/\(document.data!.count)")
+        
+        var i = 0
+        var bytesSent = 0
+        for byte in packet {
+            tempPacket.append(byte)
+            if ( i != 999 ) {
+                i += 1
+            } else {
+                let _ = document.udpConnection.send(data: tempPacket)
+                tempPacket = Data()
+                i = 0
+                
+                bytesSent += 1000
+                let percentage = ( 100 * bytesSent ) / packet.count
+                progressPercentage.text = "\(percentage)%"
+                progressBar.progress = Float(percentage) / 100
+            }
+        }
+        
+        if ( i != 0 ) {
+            let lastBytes = packet.advanced(by: packet.count - i)
+            print(lastBytes)
+            let _ = document.udpConnection.send(data: lastBytes)
+        }
+        
+        document.udpConnection.close()
+        
+        progressPercentage.text = "100%"
+        progressBar.progress = 1
+    }
 }
