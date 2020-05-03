@@ -18,7 +18,7 @@ class MyDocument: UIDocument {
         print("Loaded!")
         if let userContent = contents as? Data {
             data = userContent
-            print(data)
+            //print(data)
         }
     }
 }
@@ -27,6 +27,15 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
     //MARK: Variables
     let importMenu: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: [String("public.data")], in: .import)
     
+    var fileBroadCastConnection: UDPBroadcastConnection!
+    
+    var udpServer: UDPServer? = nil
+    var receveingFile: Bool = false
+    var bytesReceived: Int = 0
+    var receivedFile: Data = Data()
+    var fileSizeInBytes: Int = 0
+    var receivedFileName: String?
+    
     //MARK: Outlets
     
     @IBOutlet weak var fileNameLabel: UILabel!
@@ -34,10 +43,29 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
     @IBOutlet weak var progressPercentage: UILabel!
     @IBOutlet weak var fileSize: UILabel!
     @IBOutlet weak var fileInfoView: UIView!
+    @IBOutlet weak var serverSwitch: UISwitch!
     
     //MARK: Actions
     @IBAction func AddDocument(_ sender: UIBarButtonItem) {
         self.present(importMenu, animated: true, completion: nil)
+    }
+        
+    @IBAction func serverChangedState(_ sender: UISwitch) {
+        
+        if ( sender.isOn ) {
+            print("server on")
+            udpServer = UDPServer(address: "255.255.255.255", port: 5006)
+            receivedFile = Data()
+            DispatchQueue.global(qos: .background).async {
+                self.receiveData()
+            }
+        } else {
+            print("server off")
+            udpServer?.close()
+            receivedFile = Data()
+            //fileBroadCastConnection.closeConnection()
+            //serverSwitchOutlet.isEnabled = false
+        }
     }
     
     override func viewDidLoad() {
@@ -49,6 +77,45 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         importMenu.shouldShowFileExtensions = true
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
+        /*do { fileBroadCastConnection = try UDPBroadcastConnection(
+        port: 5005,
+        handler: { [weak self] (ipAddress: String, port: Int, response: Data) -> Void in
+            print(response)
+            if ( !self!.receveingFile ) {
+                let packet = String(bytes: response, encoding: String.Encoding.utf8)
+                let fileDescription = packet?.components(separatedBy: "/")
+                
+                self!.receivedFileName = fileDescription![0]
+                self!.fileSizeInBytes = Int(fileDescription![1])!
+                
+                print("\(String(describing: self!.receivedFileName)) -> \(self!.fileSizeInBytes)")
+                
+                self!.receveingFile = true
+            } else if ( self!.receveingFile ) {
+                print(String(bytes: response, encoding: String.Encoding.utf8) as Any)
+                self!.receivedFile += response
+                print(self!.receivedFile.count)
+                if ( self!.receivedFile.count == self!.fileSizeInBytes ) {
+                    self!.receveingFile = false
+                    
+                    let activityViewController = UIActivityViewController(activityItems: [self!.receivedFile], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = self!.view // so that iPads won't crash
+                    
+                    // exclude some activity types from the list (optional)
+                    activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
+
+                    // present the view controller
+                    self!.present(activityViewController, animated: true, completion: nil)
+                }
+            }
+        },
+        errorHandler: { (error) in
+          print(error)
+        })} catch {
+            print("error setting up broadcast connection")
+        }*/
     }
     
     //MARK: DocumentPicker callbacks
@@ -129,4 +196,86 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         progressPercentage.text = "100%"
         progressBar.progress = 1
     }
+    
+    func receiveData() {
+        let (buff, _, _) = udpServer?.recv(1000) ?? ([0x0], "", 1)
+        if ( !receveingFile ) {
+            let packet = String(bytes: buff ?? [], encoding: String.Encoding.utf8)
+            let fileDescription = packet?.components(separatedBy: "/")
+            
+            receivedFileName = fileDescription![0]
+            fileSizeInBytes = Int(fileDescription![1]) ?? 0
+            
+            print("\(String(describing: receivedFileName)) -> \(fileSizeInBytes)")
+            
+            receveingFile = true
+            
+            receiveData()
+            return
+        } else if ( receveingFile ) {
+            print(buff as Any)
+            receivedFile += buff!
+            print(receivedFile.count)
+            if ( receivedFile.count == fileSizeInBytes ) {
+                receveingFile = false
+                
+                DispatchQueue.main.async {
+                    let activityViewController = UIActivityViewController(activityItems: [self.receivedFile], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+                    
+                    // exclude some activity types from the list (optional)
+                    activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
+
+                    // present the view controller
+                    self.present(activityViewController, animated: true, completion: nil)
+                    
+                    self.serverSwitch.setOn(false, animated: true)
+                    self.udpServer?.close()
+                }
+                return
+            } else if ( receivedFile.count < fileSizeInBytes) {
+                receiveData()
+            }
+        }
+    }
+    
+    /*func receiveData() {
+        do { fileBroadCastConnection = try UDPBroadcastConnection(
+        port: 5006,
+        handler: { [weak self] (ipAddress: String, port: Int, response: Data) -> Void in
+            print(response)
+            if ( !self!.receveingFile ) {
+                let packet = String(bytes: response, encoding: String.Encoding.utf8)
+                let fileDescription = packet?.components(separatedBy: "/")
+                
+                self!.receivedFileName = fileDescription![0]
+                self!.fileSizeInBytes = Int(fileDescription![1])!
+                
+                print("\(self!.receivedFileName) -> \(self!.fileSizeInBytes)")
+                
+                self!.receveingFile = true
+            } else if ( self!.receveingFile ) {
+                print(String(bytes: response, encoding: String.Encoding.utf8))
+                self!.receivedFile += response
+                print(self!.receivedFile.count)
+                if ( self!.receivedFile.count == self!.fileSizeInBytes ) {
+                    self!.receveingFile = false
+                    
+                    let activityViewController = UIActivityViewController(activityItems: [self!.receivedFile], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = self!.view // so that iPads won't crash
+                    
+                    // exclude some activity types from the list (optional)
+                    activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
+
+                    // present the view controller
+                    self!.present(activityViewController, animated: true, completion: nil)
+                }
+            }
+        },
+        errorHandler: { (error) in
+          print(error)
+        })} catch {
+            print("error setting up broadcast connection")
+        }
+    }*/
 }

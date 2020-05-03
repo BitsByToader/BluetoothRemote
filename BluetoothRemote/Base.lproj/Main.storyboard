@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GbS-Vs-t89">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,11 +121,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="GP8-eY-1rf"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="m3B-8R-dUd" appends="YES" id="iNX-GW-fK9"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mouse" image="cursor.rays" catalog="system" id="cCP-k9-7dV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9s-TD-AKb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="2" maximumNumberOfTouches="2" id="m3B-8R-dUd">
+                    <scrollTypes key="allowedScrollTypesMask" discrete="YES"/>
+                    <connections>
+                        <action selector="scrollRecognizer:" destination="KGN-hN-H8S" id="MVF-nX-WJa"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-679" y="292"/>
         </scene>
@@ -234,11 +244,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File server status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwo-NB-PHA">
+                                <rect key="frame" x="20" y="757" width="317" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nDz-M7-b3w">
+                                <rect key="frame" x="345" y="752" width="51" height="31"/>
+                                <connections>
+                                    <action selector="serverChangedState:" destination="J0b-Pf-Gtz" eventType="valueChanged" id="e6W-bo-xIA"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="vlt-tr-a2d" firstAttribute="bottom" secondItem="nDz-M7-b3w" secondAttribute="bottom" constant="30" id="Fxh-U5-6ZD"/>
                             <constraint firstItem="Fl9-0S-WSn" firstAttribute="top" secondItem="vlt-tr-a2d" secondAttribute="top" constant="75" id="K2W-QW-hpH"/>
+                            <constraint firstItem="xwo-NB-PHA" firstAttribute="leading" secondItem="vlt-tr-a2d" secondAttribute="leading" constant="20" id="TnY-sk-L5J"/>
+                            <constraint firstItem="vlt-tr-a2d" firstAttribute="bottom" secondItem="xwo-NB-PHA" secondAttribute="bottom" constant="35" id="Ufe-b2-etO"/>
+                            <constraint firstItem="vlt-tr-a2d" firstAttribute="trailing" secondItem="nDz-M7-b3w" secondAttribute="trailing" constant="20" id="XnX-dm-crl"/>
                             <constraint firstItem="vlt-tr-a2d" firstAttribute="trailing" secondItem="Fl9-0S-WSn" secondAttribute="trailing" constant="20" id="g6V-gc-K6R"/>
+                            <constraint firstItem="nDz-M7-b3w" firstAttribute="leading" secondItem="xwo-NB-PHA" secondAttribute="trailing" constant="8" id="i6n-Bk-6l0"/>
                             <constraint firstItem="Fl9-0S-WSn" firstAttribute="leading" secondItem="vlt-tr-a2d" secondAttribute="leading" constant="20" id="vrZ-us-QG1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vlt-tr-a2d"/>
@@ -248,7 +275,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Transfer" image="square.and.arrow.down.fill" catalog="system" id="Taz-fj-lng"/>
+                    <tabBarItem key="tabBarItem" title="Transfer" image="square.and.arrow.down.fill" catalog="system" selectedImage="square.and.arrow.down.fill" id="Taz-fj-lng"/>
                     <navigationItem key="navigationItem" title="File Transfer" largeTitleDisplayMode="always" id="sU1-gP-KvH">
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus.circle" catalog="system" id="fSY-Ud-DvZ">
                             <connections>
@@ -262,6 +289,7 @@
                         <outlet property="fileSize" destination="MWC-S2-uOb" id="2JC-Se-dFU"/>
                         <outlet property="progressBar" destination="shO-JV-86a" id="Vaa-4a-InE"/>
                         <outlet property="progressPercentage" destination="UbJ-3r-BDV" id="09r-z4-jqA"/>
+                        <outlet property="serverSwitch" destination="nDz-M7-b3w" id="8Sj-jO-uL2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="weQ-4I-8ra" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -272,7 +300,7 @@
         <scene sceneID="O73-yZ-W8z">
             <objects>
                 <navigationController id="4yh-ZL-9Xe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7Gg-9E-6BQ"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="square.and.arrow.down.fill" catalog="system" id="7Gg-9E-6BQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qhX-2L-ZpE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

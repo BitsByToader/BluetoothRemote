@@ -14,7 +14,24 @@ class MouseViewController: UIViewController {
     var previousPosition: CGPoint?
     var initialPosition: CGPoint?
     var callBacksReceived: Int = 0
+    var isScrolling: Bool = false
     var broadcastConnection: UDPBroadcastConnection!
+    
+    //MARK: Actions
+    
+    @IBAction func scrollRecognizer(_ sender: UIPanGestureRecognizer) {
+        guard sender.view != nil else {return}
+        let touch = sender.view!
+        // Get the changes in the X and Y directions relative to
+        // the superview's coordinate space.
+        let translation = sender.translation(in: touch.superview)
+        
+        if ( sender.state == .began ) {
+            self.initialPosition = touch.center
+        } else if ( sender.state == .changed ) {
+            sendUDPCommand(data: "S\(translation.x)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +83,11 @@ class MouseViewController: UIViewController {
                     y = y - prevY
                     //y = ( y * 1080 ) / Int(self.view.frame.height)
                     
-                    sendUDPCommand(data: "M\(x),\(y)")
+                    if ( !isScrolling) {
+                        sendUDPCommand(data: "M\(x),\(y)")
+                    } else {
+                        sendUDPCommand(data: "S\(x)")
+                    }
                     
                     previousPosition = position
                     callBacksReceived = 0
