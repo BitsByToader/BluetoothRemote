@@ -23,9 +23,14 @@ class MyDocument: UIDocument {
     }
 }
 
+///TODO: Open the files in a different way when receiving a file from a PC, so I don't need to store the files temporarily in memory
+///TODO: Add another view for inserting the IP of the PC, or make a broadcast so the PC responds and shows itself in a table view
+///TODO: Analyze why some files don't get sent to the PC all the way through (maybe a python issue, maybe a swift issue)
+///TODO: Finish implementing the mouse
+
 class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
     //MARK: Variables
-    let importMenu: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: [String("public.data")], in: .import)
+    let importMenu: UIDocumentPickerViewController = UIDocumentPickerViewController(documentTypes: [String("public.data")], in: .open)
     
     var fileBroadCastConnection: UDPBroadcastConnection!
     
@@ -77,73 +82,39 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         importMenu.shouldShowFileExtensions = true
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
-        /*do { fileBroadCastConnection = try UDPBroadcastConnection(
-        port: 5005,
-        handler: { [weak self] (ipAddress: String, port: Int, response: Data) -> Void in
-            print(response)
-            if ( !self!.receveingFile ) {
-                let packet = String(bytes: response, encoding: String.Encoding.utf8)
-                let fileDescription = packet?.components(separatedBy: "/")
-                
-                self!.receivedFileName = fileDescription![0]
-                self!.fileSizeInBytes = Int(fileDescription![1])!
-                
-                print("\(String(describing: self!.receivedFileName)) -> \(self!.fileSizeInBytes)")
-                
-                self!.receveingFile = true
-            } else if ( self!.receveingFile ) {
-                print(String(bytes: response, encoding: String.Encoding.utf8) as Any)
-                self!.receivedFile += response
-                print(self!.receivedFile.count)
-                if ( self!.receivedFile.count == self!.fileSizeInBytes ) {
-                    self!.receveingFile = false
-                    
-                    let activityViewController = UIActivityViewController(activityItems: [self!.receivedFile], applicationActivities: nil)
-                    activityViewController.popoverPresentationController?.sourceView = self!.view // so that iPads won't crash
-                    
-                    // exclude some activity types from the list (optional)
-                    activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
-
-                    // present the view controller
-                    self!.present(activityViewController, animated: true, completion: nil)
-                }
-            }
-        },
-        errorHandler: { (error) in
-          print(error)
-        })} catch {
-            print("error setting up broadcast connection")
-        }*/
     }
     
     //MARK: DocumentPicker callbacks
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         print(urls)
-        let url = urls[0]
-        let document = MyDocument(fileURL: url)
-        document.open(completionHandler: { (Bool) -> Void in
-            document.name = url.lastPathComponent
-            
-            self.progressPercentage.text = "0%"
-            self.progressBar.progress = 0
-            
-            self.fileNameLabel.text = document.name
-            
-            let size: Double = Double(document.data!.count) / (1024*1024)
-            self.fileSize.text = "\( String(format: "%.2f", size) )MB"
-            
-            self.fileInfoView.isHidden = false
-            
-            DispatchQueue.main.async {
-                self.sendData(document: document)
-            }
-            
-            document.close(completionHandler: { (Bool) -> Void in
-                print("Closed!")
+        //let url = urls[0]
+        for url in urls {
+            let document = MyDocument(fileURL: url)
+            document.open(completionHandler: { (Bool) -> Void in
+                document.name = url.lastPathComponent
+                
+                self.progressPercentage.text = "0%"
+                self.progressBar.progress = 0
+                
+                self.fileNameLabel.text = document.name
+                
+                let size: Double = Double(document.data!.count) / (1024*1024)
+                self.fileSize.text = "\( String(format: "%.2f", size) )MB"
+                
+                self.fileInfoView.isHidden = false
+                
+                DispatchQueue.global(qos: .background).async {
+                    self.sendData(document: document)
+                    
+                    DispatchQueue.main.async {
+                        document.close(completionHandler: { (Bool) -> Void in
+                            print("Closed!")
+                        })
+                    }
+                }
+
             })
-        })
+        }
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
@@ -180,8 +151,10 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
                 
                 bytesSent += 1000
                 let percentage = ( 100 * bytesSent ) / packet.count
-                progressPercentage.text = "\(percentage)%"
-                progressBar.progress = Float(percentage) / 100
+                DispatchQueue.main.async {
+                    self.progressPercentage.text = "\(percentage)%"
+                    self.progressBar.progress = Float(percentage) / 100
+                }
             }
         }
         
@@ -193,48 +166,52 @@ class FileTransferViewController: UIViewController, UIDocumentPickerDelegate {
         
         document.udpConnection.close()
         
-        progressPercentage.text = "100%"
-        progressBar.progress = 1
+        DispatchQueue.main.async {
+            self.progressPercentage.text = "100%"
+            self.progressBar.progress = 1
+        }
     }
     
     func receiveData() {
         let (buff, _, _) = udpServer?.recv(1000) ?? ([0x0], "", 1)
-        if ( !receveingFile ) {
-            let packet = String(bytes: buff ?? [], encoding: String.Encoding.utf8)
-            let fileDescription = packet?.components(separatedBy: "/")
-            
-            receivedFileName = fileDescription![0]
-            fileSizeInBytes = Int(fileDescription![1]) ?? 0
-            
-            print("\(String(describing: receivedFileName)) -> \(fileSizeInBytes)")
-            
-            receveingFile = true
-            
-            receiveData()
-            return
-        } else if ( receveingFile ) {
-            print(buff as Any)
-            receivedFile += buff!
-            print(receivedFile.count)
-            if ( receivedFile.count == fileSizeInBytes ) {
-                receveingFile = false
+        if ( buff != nil ) {
+            if ( !receveingFile ) {
+                let packet = String(bytes: buff ?? [], encoding: String.Encoding.utf8)
+                let fileDescription = packet?.components(separatedBy: "/")
                 
-                DispatchQueue.main.async {
-                    let activityViewController = UIActivityViewController(activityItems: [self.receivedFile], applicationActivities: nil)
-                    activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-                    
-                    // exclude some activity types from the list (optional)
-                    activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
-
-                    // present the view controller
-                    self.present(activityViewController, animated: true, completion: nil)
-                    
-                    self.serverSwitch.setOn(false, animated: true)
-                    self.udpServer?.close()
-                }
-                return
-            } else if ( receivedFile.count < fileSizeInBytes) {
+                receivedFileName = (fileDescription ?? ["", ""])[0]
+                fileSizeInBytes = Int(fileDescription![1]) ?? 0
+                
+                print("\(String(describing: receivedFileName)) -> \(fileSizeInBytes)")
+                
+                receveingFile = true
+                
                 receiveData()
+                return
+            } else if ( receveingFile ) {
+                print(buff as Any)
+                receivedFile += buff ?? [Byte()]
+                print(receivedFile.count)
+                if ( receivedFile.count == fileSizeInBytes ) {
+                    receveingFile = false
+                    
+                    DispatchQueue.main.async {
+                        let activityViewController = UIActivityViewController(activityItems: [self.receivedFile], applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+                        
+                        // exclude some activity types from the list (optional)
+                        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.postToFacebook ]
+
+                        // present the view controller
+                        self.present(activityViewController, animated: true, completion: nil)
+                        
+                        self.serverSwitch.setOn(false, animated: true)
+                        self.udpServer?.close()
+                    }
+                    return
+                } else if ( receivedFile.count < fileSizeInBytes) {
+                    receiveData()
+                }
             }
         }
     }
