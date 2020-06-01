@@ -55,6 +55,11 @@
 		8B0FF2C9243BB70F00044F6A /* UDPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPClient.swift; sourceTree = "<group>"; };
 		8B0FF2CB243BB70F00044F6A /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
 		8B0FF2CC243BB70F00044F6A /* SwiftSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftSocket.h; sourceTree = "<group>"; };
+		8B44FA0624607FB7004824C7 /* Documentation.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
+		8B44FA0724607FB7004824C7 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		8B44FA0824607FB7004824C7 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		8B44FA0924607FB7004824C7 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		8B44FA0A24607FB7004824C7 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		8B7263BC2409A75D00E774B8 /* MouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseViewController.swift; sourceTree = "<group>"; };
 		8BC7058723FC701200DDBD44 /* UDPBroadcastConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPBroadcastConnection.swift; sourceTree = "<group>"; };
 		8BC7058923FC702A00DDBD44 /* UDPBroadcast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UDPBroadcast.h; sourceTree = "<group>"; };
@@ -115,6 +120,18 @@
 			path = SwiftSocket;
 			sourceTree = "<group>";
 		};
+		8B44FA0524607FB7004824C7 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				8B44FA0624607FB7004824C7 /* Documentation.html */,
+				8B44FA0724607FB7004824C7 /* GCDAsyncUdpSocket.m */,
+				8B44FA0824607FB7004824C7 /* GCDAsyncSocket.m */,
+				8B44FA0924607FB7004824C7 /* GCDAsyncUdpSocket.h */,
+				8B44FA0A24607FB7004824C7 /* GCDAsyncSocket.h */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
 		8BD5A7AF23F9DABF0024E235 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +155,7 @@
 		8BD5A7BA23F9DABF0024E235 /* BluetoothRemote */ = {
 			isa = PBXGroup;
 			children = (
+				8B44FA0524607FB7004824C7 /* GCD */,
 				8B0FF2C2243BB6F000044F6A /* SwiftSocket */,
 				8B0FF2C1243B99DA00044F6A /* BluetoothRemote.entitlements */,
 				8BD5A7BB23F9DABF0024E235 /* AppDelegate.swift */,
